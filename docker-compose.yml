@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  jaymark-virtual-web:
+    image: limweb/evp-jaymart:latest
+    container_name: jaymark-virtual-web
+    restart: "always"    
+    environment:
+      NODE_ENV: env
+      VIRTUAL_HOST: "jaymart.eventpassdev.com"
+      VIRTUAL_PORT: "3000"
+      LETSENCRYPT_HOST: "jaymart.eventpassdev.com"
+      LETSENCRYPT_EMAIL: "limweb@hotmail.com"
+    ports:
+      - 3000:3000
+      
+networks:
+  default:
+    external:
+      name: nginx-network      
